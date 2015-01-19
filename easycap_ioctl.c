@@ -1033,9 +1033,9 @@ long easycap_unlocked_ioctl(struct file *file,
 			if (*p2)
 				*p2++ = 0;
 			if (3 > i) {
-				rc = (int) strict_strtol(p1, 10, &lng);
+				rc = (int) kstrtol(p1, 10, &lng);
 				if (rc) {
-					SAM("ERROR: %i=strict_strtol(%s,.,,)\n",
+					SAM("ERROR: %i=kstrtol(%s,.,,)\n",
 					    rc, p1);
 					mutex_unlock(&easycapdc60_dongle[kd].mutex_video);
 					return -EINVAL;
