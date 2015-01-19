@@ -3453,11 +3453,7 @@ static const struct v4l2_file_operations v4l2_fops = {
 
 static int easycap_register_video(struct easycap *peasycap)
 {
-	/*
-	 * FIXME: This is believed to be harmless,
-	 * but may well be unnecessary or wrong.
-	 */
-	peasycap->video_device.v4l2_dev = NULL;
+	peasycap->video_device.v4l2_dev = &peasycap->v4l2_device;
 
 	strcpy(&peasycap->video_device.name[0], "easycapdc60");
 	peasycap->video_device.fops = &v4l2_fops;
