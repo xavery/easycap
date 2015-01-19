@@ -707,9 +707,9 @@ int easycap_alsa_probe(struct easycap *peasycap)
 		peasycap->alsa_hardware.rate_max = 48000;
 	}
 
-	if (0 != snd_card_create(SNDRV_DEFAULT_IDX1, "easycap_alsa",
+	if (0 != snd_card_new(NULL, SNDRV_DEFAULT_IDX1, "easycap_alsa",
 				THIS_MODULE, 0, &psnd_card)) {
-		SAY("ERROR: Cannot do ALSA snd_card_create()\n");
+		SAY("ERROR: Cannot do ALSA snd_card_new()\n");
 		return -EFAULT;
 	}
 
